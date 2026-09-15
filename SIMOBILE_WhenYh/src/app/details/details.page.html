@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Tombol kembali otomatis ke halaman produk -->
+      <ion-back-button defaultHref="/produk"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Produk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Gunakan *ngIf untuk memastikan data sudah didapat sebelum dirender -->
+  <ion-card *ngIf="produkDetail">
+    
+    <img [src]="produkDetail.gambar == '' ? 'https://ionicframework.com/docs/img/demos/thumbnail.svg' : produkDetail.gambar" 
+    style="height: 500px; object-fit: cover; width: 50%;" />
+    
+    <ion-card-header>
+      <ion-card-subtitle>{{ produkDetail.kategori }}</ion-card-subtitle>
+      <ion-card-title>{{ produkDetail.nama }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none">
+        
+        <ion-item>
+          <ion-icon name="layers-outline" slot="start"></ion-icon>
+          <ion-label>Sisa Stok</ion-label>
+          <!-- Menggunakan badge (materi Week 6) untuk mempercantik tampilan angka -->
+          <ion-badge [color]="produkDetail.stok == 0 ? 'danger' : 'primary'">
+            {{ produkDetail.stok }}
+          </ion-badge>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label>Harga Beli</ion-label>
+          <ion-text>Rp {{ produkDetail.harga_beli }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+          <ion-label>Harga Jual</ion-label>
+          <ion-text color="success"><strong>Rp {{ produkDetail.harga_jual }}</strong></ion-text>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
