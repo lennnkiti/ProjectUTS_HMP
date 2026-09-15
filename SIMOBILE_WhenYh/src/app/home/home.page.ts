@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from '../auth';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
-
-  constructor() {}
-
+  namaUser: string = '';
+  constructor(private auth: Auth) {
+    this.namaUser = this.auth.activeUser;
+  }
 }

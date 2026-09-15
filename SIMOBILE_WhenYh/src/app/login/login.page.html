@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>LOGIN SIMOBILE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class = "ion-padding">
+ <ion-card>
+    <ion-card-header>
+      <ion-card-title>Masuk ke Toko Makmur Jaya</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Username" labelPlacement="floating" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" label="Password" labelPlacement="floating" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <!-- Pesan Error muncul jika isError = true -->
+      <ion-text color="danger" *ngIf="isError">
+        <p>Username atau Password salah!</p>
+      </ion-text>
+
+      <ion-button expand="block" (click)="login()" class="ion-margin-top">LOGIN</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
