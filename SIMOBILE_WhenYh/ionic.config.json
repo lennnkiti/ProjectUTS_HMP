@@ -1,0 +1,7 @@
+{
+  "name": "SIMOBILE_WhenYh",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
