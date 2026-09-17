@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tambah Produk Baru</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    
+    <!-- Input Nama Barang -->
+    <ion-item>
+      <ion-input label="Nama Barang*" labelPlacement="stacked" placeholder="Contoh: Sabun Cuci" [(ngModel)]="nama"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="isSubmit && !isNamaValid">
+      <p class="ion-padding-start" style="margin-top: 0; font-size: 12px;">Nama barang wajib diisi!</p>
+    </ion-text>
+
+    <!-- Input Kategori -->
+    <ion-item>
+      <ion-input label="Kategori" labelPlacement="stacked" placeholder="Opsional" [(ngModel)]="kategori"></ion-input>
+    </ion-item>
+
+    <!-- Input Harga Beli -->
+    <ion-item>
+      <ion-input type="number" label="Harga Beli*" labelPlacement="stacked" [(ngModel)]="harga_beli"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="isSubmit && !isHargaBeliValid">
+      <p class="ion-padding-start" style="margin-top: 0; font-size: 12px;">Harga beli harus berupa angka lebih dari 0!</p>
+    </ion-text>
+
+    <!-- Input Harga Jual -->
+    <ion-item>
+      <ion-input type="number" label="Harga Jual*" labelPlacement="stacked" [(ngModel)]="harga_jual"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="isSubmit && !isHargaJualValid">
+      <p class="ion-padding-start" style="margin-top: 0; font-size: 12px;">Harga jual harus berupa angka lebih dari 0!</p>
+    </ion-text>
+
+    <!-- Input Stok -->
+    <ion-item>
+      <ion-input type="number" label="Stok Barang*" labelPlacement="stacked" [(ngModel)]="stok"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="isSubmit && !isStokValid">
+      <p class="ion-padding-start" style="margin-top: 0; font-size: 12px;">Stok tidak boleh bernilai negatif!</p>
+    </ion-text>
+
+    <!-- Input URL Gambar -->
+    <ion-item>
+      <ion-input label="URL Gambar" labelPlacement="stacked" placeholder="Biarkan kosong jika belum ada" [(ngModel)]="gambar"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button expand="block" (click)="simpan()" class="ion-margin-top">
+    SIMPAN PRODUK
+  </ion-button>
+</ion-content>
