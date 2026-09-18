@@ -24,25 +24,19 @@ export class TambahProdukPage implements OnInit {
 
   ngOnInit() {
   }
-  // 3. Logika Getter untuk mengecek masing-masing field (Syarat validasi dari soal UTS)
-  get isNamaValid() { return this.nama.trim() !== ''; }
-  get isHargaBeliValid() { return this.harga_beli > 0; }
-  get isHargaJualValid() { return this.harga_jual > 0; }
-  get isStokValid() { return this.stok >= 0; } // Stok tidak boleh negatif (0 boleh)
+ simpan() {
+    this.isSubmit = true; 
 
-  simpan() {
-    this.isSubmit = true; // Tandai bahwa tombol simpan sudah ditekan
-
-    // 4. Jika semua validasi bernilai TRUE, eksekusi penyimpanan
-    if (this.isNamaValid && this.isHargaBeliValid && this.isHargaJualValid && this.isStokValid) {
-
-      // Auto-generate ID sederhana
-      const idBaru = 'p' + (this.produkService.dataProduk.length + 1).toString().padStart(2, '0');
-
-      const produkBaru = {
+    // Mengevaluasi langsung dari variabel ngModel
+    if (this.nama !== '' && this.kategori !== '' && this.harga_beli > 0 && this.harga_jual > 0 && this.stok >= 0) {
+      
+      // Menggunakan let sebagai pengganti const
+      let idBaru = 'p' + (this.produkService.dataProduk.length + 1).toString().padStart(2, '0');
+      
+      let produkBaru = {
         id: idBaru,
         nama: this.nama,
-        kategori: this.kategori,  
+        kategori: this.kategori,
         stok: this.stok,
         harga_beli: this.harga_beli,
         harga_jual: this.harga_jual,
@@ -50,13 +44,8 @@ export class TambahProdukPage implements OnInit {
         gambar: this.gambar
       };
 
-      // Push data baru ke Service
       this.produkService.dataProduk.push(produkBaru);
-
-      // Reset form ke kondisi awal
       this.resetForm();
-
-      // Kembali ke halaman daftar produk
       this.router.navigate(['/produk']);
     }
   }
